@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Title</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        ul li {
+            padding: 1em;
+            margin: 5px 0;
+            border: 1px solid rgba(200,200,230,1);
+        }
+        ul li:hover {
+            background: rgba(220,220,230,1);
+            border: 1px solid rgba(200,200,210,1);
+        }
+        .p10 {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div id="app">
+    <div style="max-width:100vw;">
+        <form action="/api/v1/HRMS/getRotaDetails" method="get">
+            <div>
+                <input type="text" class="p10" style="width: 60%;" name="remarks" id="queryUser" />
+                <!--<button type="button" th:onclick="'javascript:queryHandle()'" class="p10" style="width: 32%;">搜索</button>-->
+                <button type="submit" class="p10" style="width: 32%;">搜索</button>
+            </div>
+        </form>
+        <div>
+            <ul id="list">
+                <li th:each="item : ${empList}">
+                    <span th:text="${item.userName}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+
+  /*  function getDom(s) {
+        return document.querySelector(s)
+    }
+    var ajax = new Ajax();
+
+    function queryHandle() {
+        ajax.get("/api/v1/HRMS/getRotaDetails?remarks=" + getDom("#queryUser").value)
+    }
+
+    function Ajax() {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        this.get = function (api, formObj) {
+            return res("get",api, formObj)
+        };
+        this.post = function (api, formObj) {
+            return res("post",api, formObj)
+        };
+
+        function res(method, api, formObj) {
+            return new Promise(function (resolve, rejected) {
+                xmlhttp.open(method, api, true);
+                xmlhttp.send(formObj);
+                xmlhttp.onreadystatechange = function() {
+                };
+            })
+        }
+    }*/
+
+</script>
+
+</body>
+</html>

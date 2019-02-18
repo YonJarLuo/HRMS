@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.huaCloud.dao.CommunicationMapper">
+  <resultMap id="BaseResultMap" type="cn.huaCloud.domain.Communication">
+    <id column="u_id" jdbcType="VARCHAR" property="uId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="alias_name" jdbcType="VARCHAR" property="aliasName" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="department" jdbcType="VARCHAR" property="department" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="phone_number" jdbcType="VARCHAR" property="phoneNumber" />
+    <result column="telephone_number" jdbcType="VARCHAR" property="telephoneNumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    u_id, user_name, account, alias_name, post, department, sex, phone_number, telephone_number, 
+    email, address, company
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from communication
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from communication
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.huaCloud.domain.Communication">
+    insert into communication (u_id, user_name, account, 
+      alias_name, post, department, 
+      sex, phone_number, telephone_number, 
+      email, address, company
+      )
+    values (#{uId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{aliasName,jdbcType=VARCHAR}, #{post,jdbcType=VARCHAR}, #{department,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, #{telephoneNumber,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{company,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.huaCloud.domain.Communication">
+    insert into communication
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        u_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="aliasName != null">
+        alias_name,
+      </if>
+      <if test="post != null">
+        post,
+      </if>
+      <if test="department != null">
+        department,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="phoneNumber != null">
+        phone_number,
+      </if>
+      <if test="telephoneNumber != null">
+        telephone_number,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="uId != null">
+        #{uId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="aliasName != null">
+        #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNumber != null">
+        #{telephoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.huaCloud.domain.Communication">
+    update communication
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="aliasName != null">
+        alias_name = #{aliasName,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="department != null">
+        department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null">
+        phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="telephoneNumber != null">
+        telephone_number = #{telephoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.huaCloud.domain.Communication">
+    update communication
+    set user_name = #{userName,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      alias_name = #{aliasName,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      department = #{department,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      phone_number = #{phoneNumber,jdbcType=VARCHAR},
+      telephone_number = #{telephoneNumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR}
+    where u_id = #{uId,jdbcType=VARCHAR}
+  </update>
+</mapper>
